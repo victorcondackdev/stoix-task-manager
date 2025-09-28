@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg:#0b1220; --card:#121a2b; --text:#e7edf7; --muted:#9fb3d8; --accent:#4da3ff; --danger:#ff5b6e; --ok:#35ca87; --warn:#ffcf66;
+  }
+  body { @apply bg-bg text-text; }
+  input, select, textarea { @apply bg-[#0f172a] text-text border border-[#1f2a44] px-3 py-2 rounded-lg; }
+  button { @apply rounded-lg border border-[#1f2a44] px-3 py-2 cursor-pointer; }
+  button:hover { @apply border-accent; }
+  .btn-primary { @apply border-accent text-accent; }
+  .btn-danger { @apply border-danger text-danger; }
+  .card { @apply bg-card border border-[#1a2540] rounded-2xl p-4 shadow-xl; }
+  .pill { @apply px-2 py-0.5 text-xs rounded-full border; }
+  .pill-todo { @apply border-warn text-warn; }
+  .pill-progress { @apply border-accent text-accent; }
+  .pill-done { @apply border-ok text-ok; }
+  table { @apply w-full; border-collapse: collapse; }
+  th, td { @apply text-left p-2 border-b border-[#223154]; }
+  th { @apply text-muted font-semibold; }
+}

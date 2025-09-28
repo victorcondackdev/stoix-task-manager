@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: stoix
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  backend:
+    build: ./apps/backend
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/stoix?schema=public
+      FRONTEND_ORIGIN: http://localhost:4200
+      NODE_ENV: development
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  frontend:
+    build: ./apps/frontend
+    command: npm run start:docker
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+volumes:
+  pgdata:
+    driver: local
