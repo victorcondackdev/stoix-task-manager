@@ -18,7 +18,7 @@ npm run dev
 ```bash
 cd ../frontend
 npm i
-npm run start:local
+npm run start
 ```
 Acesse http://localhost:4200
 
